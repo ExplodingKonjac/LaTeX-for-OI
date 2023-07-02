@@ -61,7 +61,7 @@
 {
 	\end{frame}
 }
-\renewenvironment{items}
+\newenvironment{items}
 {
 	\begin{itemize}
 		\setlength{\itemsep}{0.5em}
@@ -69,7 +69,7 @@
 {
 	\end{itemize}
 }
-\renewenvironment{enums}
+\newenvironment{enums}
 {
 	\begin{enumerate}
 		\setlength{\itemsep}{0.5em}
