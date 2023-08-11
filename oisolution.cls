@@ -52,7 +52,7 @@
 \newcommand\englishname[1]{\texorpdfstring{\textrm{\MakeLowercase{#1}}}{#1}}
 \def\ilcode{\mintinline}
 
-\newcommand\solutiontitle[3]{\title{#1}\author{#2}\date{#3}\begin{titlingpage}\maketitle\tableofcontents\end{titlingpage}}
+\newcommand\solutiontitle{\begin{titlingpage}\maketitle\tableofcontents\end{titlingpage}}
 \newcommand\newproblem[2]{\newpage\section[#2]{#1（\englishname{#2}）}}
 
 % environments
