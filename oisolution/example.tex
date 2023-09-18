@@ -1,0 +1,23 @@
+\documentclass{oisolution}
+
+\begin{document}
+
+\solutiontitle{NOI 2023 模拟赛\ 题解}{}{\today}
+
+\newproblem{带鱼}{fish}
+
+显然最多选两个点。记 $L_i$ 为 $[i-K-1,i]$ 中最小值的下标，$R[i]$ 为 $[i+1,i+K+1]$ 中最小值的下标。那么所有有用点对就是 $(L[i],i),(i,R[i])$。单调队列找到 $(L_i,R_i)$ 即可。
+
+\newproblem{薯条}{chips}
+
+有一种构造方法：建一个超级源点 $S$ 连向所有奇度数点，这样整个图就有欧拉回路。硬点 $S$ 为起点跑一遍不难构造方案，但是不保证边数为偶数。
+
+因为边数为偶数，所以可以把边两两配对成 $(u,v),(v,w)$ 的形式，然后建一个新图，其中 $(u,w)$ 连边。然后做上面的方法即可。
+
+\newproblem{烧饼}{pancake}
+
+考虑使用如下算法近似维护出凸包：把 $[0,\pi)$ 用 $B$ 个角度均匀分割，然后对于每个角度 $\theta$，求出投影在直线 $y=\tan\theta x$ 上最两端的点加入凸包。
+
+这个算法容易用线段树维护。误差为 $\displaystyle 1-\cos\frac{\pi}{B}=O\left(\left(\frac{\pi}{B}\right)^2\right)$。
+
+\end{document}

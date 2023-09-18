@@ -74,7 +74,7 @@
 \newcommand\exampleinput[1]{\subsection[样例 #1 输入]{【样例 #1 输入】}}
 \newcommand\exampleoutput[1]{\subsection[样例 #1 输出]{【样例 #1 输出】}}
 \newcommand\exampleexplain[1]{\subsection[样例 #1 解释]{【样例 #1 解释】}}
-\newcommand\examplefile[1]{\subsection[样例 #1]{【样例 #1】}见选手目录下的 \filename{\CurProb/\CurProb#1.in} 与 \filename{\CurProb/\CurProb#1.out}。\par}
+\newcommand\examplefile[1]{\subsection[样例 #1]{【样例 #1】}见选手目录下的 \filename{\CurProb/\CurProb#1.in} 与 \filename{\CurProb/\CurProb#1.ans}。\par}
 \newcommand\implement{\subsection[实现细节]{【实现细节】}}
 \newcommand\scoring{\subsection[评分细则]{【评分细则】}}
 \newcommand\constraints{\subsection[数据范围]{【数据范围】}}
