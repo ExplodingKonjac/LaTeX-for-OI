@@ -95,15 +95,16 @@
 	\end{enumerate}
 }
 
-\def\HelperNoipTitleChnName<#1,#2,#3,#4>
+\def\HelperNoipTitleChnName<#1,#2,#3,#4,#5,#6,#7,#8>
 {
 	题目名称 & #1 & #2 & #3 & #4 \\ \hline
+	题目类型 & #5 & #6 & #7 & #8 \\ \hline
 }
 \def\HelperNoipTitleEngName<#1,#2,#3,#4>
 {
 	目录 & \texttt{#1} & \texttt{#2} & \texttt{#3} & \texttt{#4} \\ \hline
 	可执行文件名 & \texttt{#1} & \texttt{#2} & \texttt{#3} & \texttt{#4} \\ \hline
-	输入文件名 & \texttt{#1.in} & \texttt{#2.in} & \texttt{#3.in} & \texttt{#4.out} \\ \hline
+	输入文件名 & \texttt{#1.in} & \texttt{#2.in} & \texttt{#3.in} & \texttt{#4.in} \\ \hline
 	输出文件名 & \texttt{#1.out} & \texttt{#2.out} & \texttt{#3.out} & \texttt{#4.out} \\ \hline
 }
 \def\HelperNoipTitleTimeLimit<#1,#2,#3,#4>
@@ -126,26 +127,26 @@
 {
 	对于 C++ 语言 & \texttt{#1.cpp} & \texttt{#2.cpp} & \texttt{#3.cpp} & \texttt{#4.cpp} \\ \hline
 }
-\def\noiptitle[#1][#2][#3][#4][#5][#6]
+\def\noiptitle[#1][#2][#3][#4][#5][#6][#7]
 {
 	\begin{titlingpage}
 		\maketitle
 		\begin{center}
 		\begin{tabularx}{\textwidth}{|p{8em}|X|X|X|X|}
 			\hline
-			\HelperNoipTitleChnName<#1>
-			\HelperNoipTitleEngName<#2>
-			\HelperNoipTitleTimeLimit<#3>
-			\HelperNoipTitleMemoryLimit<#4>
-			\HelperNoipTitleTestcaseNumber<#5>
-			\HelperNoipTitleEqualPoints<#6>
+			\HelperNoipTitleChnName<#1,#2>
+			\HelperNoipTitleEngName<#3>
+			\HelperNoipTitleTimeLimit<#4>
+			\HelperNoipTitleMemoryLimit<#5>
+			\HelperNoipTitleTestcaseNumber<#6>
+			\HelperNoipTitleEqualPoints<#7>
 		\end{tabularx}\par
 		\end{center}
 		\par 提交源程序文件名
 		\begin{center}
 		\begin{tabularx}{\textwidth}{|p{8em}|X|X|X|X|}
 			\hline
-			\HelperNoipTitleSource<#2>
+			\HelperNoipTitleSource<#3>
 		\end{tabularx}\par
 		\end{center}
 		\par 编译选项
@@ -160,9 +161,10 @@
 	\end{titlingpage}
 }
 
-\def\HelperNoiTitleChnName<#1,#2,#3>
+\def\HelperNoiTitleChnName<#1,#2,#3,#4,#5,#6>
 {
 	题目名称 & #1 & #2 & #3 \\ \hline
+	题目类型 & #4 & #5 & #6 \\ \hline
 }
 \def\HelperNoiTitleEngName<#1,#2,#3>
 {
@@ -191,26 +193,26 @@
 {
 	对于 C++ 语言 & \texttt{#1.cpp} & \texttt{#2.cpp} & \texttt{#3.cpp} \\ \hline
 }
-\def\noititle[#1][#2][#3][#4][#5][#6]
+\def\noititle[#1][#2][#3][#4][#5][#6][#7]
 {
 	\begin{titlingpage}
 		\maketitle
 		\begin{center}
 		\begin{tabularx}{\textwidth}{|p{8em}|X|X|X|}
 			\hline
-			\HelperNoiTitleChnName<#1>
-			\HelperNoiTitleEngName<#2>
-			\HelperNoiTitleTimeLimit<#3>
-			\HelperNoiTitleMemoryLimit<#4>
-			\HelperNoiTitleTestcaseNumber<#5>
-			\HelperNoiTitleEqualPoints<#6>
+			\HelperNoiTitleChnName<#1,#2>
+			\HelperNoiTitleEngName<#3>
+			\HelperNoiTitleTimeLimit<#4>
+			\HelperNoiTitleMemoryLimit<#5>
+			\HelperNoiTitleTestcaseNumber<#6>
+			\HelperNoiTitleEqualPoints<#7>
 		\end{tabularx}\par
 		\end{center}
 		\par 提交源程序文件名
 		\begin{center}
 		\begin{tabularx}{\textwidth}{|p{8em}|X|X|X|}
 			\hline
-			\HelperNoiTitleSource<#2>
+			\HelperNoiTitleSource<#3>
 		\end{tabularx}\par
 		\end{center}
 		\par 编译选项

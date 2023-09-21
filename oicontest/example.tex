@@ -2,278 +2,150 @@
 
 \begin{document}
 
-\title{NOI2023 模拟赛}
-\author{}
-\date{2023 年 6 月 10 日}
-\noititle[带鱼,薯条,烧饼][fish,chips,pancake][3,1,2][1024,512,1024][5,5,4][否,否,否]
+\title{NOI2023B.C. 模拟赛}
+\author{原始人}
+\date{1919 年 8 月 10 日}
+\noititle[原神启动,完形填空,原批测试][传统题,交互题,提交答案题][genshin,blank,test][1,2,/][512,512,/][2,3,10][是,否,否]
 
-\newproblem{带鱼}{fish}
+\newproblem{原神启动}{genshin}
 
 \background
 
-这是出题人在吃（很长）的带鱼时想出来的题目。
+\begin{quotation}
+I'm am become death, the launcher of Genshin Impact.
+\end{quotation}
 
 \probdescription
 
-\stress{为了降低输入输出压力，本题是一道交互题。}
+你说的对，但是《原神》是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作 \stress{「提瓦特」} 的幻想世界，在这里，被神选中的人将被授予「神之眼」，导引元素之力。你将扮演一位名为「旅行者」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘「原神」的真相。
 
-有一个范围为 $[0,n]$ 的数轴，给定长度为 $n$ 的正整数序列 $a$（下标范围 $0\sim n-1$）以及非负整数 $K$。对于每一个整数 $i\in [0,n]$，解决如下问题：
+\inputformat
 
-选择一个集合 $S\subseteq [0,n-1]\cap\mathbb{Z}$，花费的代价为 $\sum_{x\in S}a_x$。设 $[l,r]\ (l,r\in\mathbb{Z})$ 为最长的区间满足 $i\in[l,r]$ 且 $\forall x\in S,x\notin [l,r-1]$。求出使得 $r-l\le K$ 所需要的最小代价。
+一行一个字符串 $s$ 表示屏幕状态。
 
-我们下发了 \filename{fish.h} 和 \filename{grader.cpp} 用于测试你的程序，你可以用如下编译命令进行编译：
+\outputformat
 
-\begin{code}{bash}
-g++ fish.cpp grader.cpp -o fish -std=c++14 -O2
-\end{code}
-
-\implement
-
-\stress{你不需要，也不应该实现主函数。}
-
-你需要包含头文件 \ilcode{cpp}{"fish.h"}，并实现以下函数：
-
-\begin{code}{cpp}
-std::vector<int> minCost(int n,int K,std::vector<int> a)
-\end{code}
-
-其中，$n,K$ 的意义同题目描述，$a$ 是花费序列，保证长度为 $n$。交互库在每个测试点中会调用函数 \ilcode{cpp}{minCost} 恰好一次，你需要返回一个长度为 $n+1$ 的 \ilcode{cpp}{std::vector<int>}，其中下标为 $i$ 的值表示 $i$ 的答案。
-
-\stress{你不应该从标准输入读入任何东西，或者向标准输出输出任何东西，这些行为将被视为作弊。}
-
-\subsection[交互库输入格式]{【交互库输入格式】}
-
-这里是下发交互库的输入格式，用于帮助你测试你的程序。
-
-第一行输入两个数表示 $n,K$。
-
-第二行输入 $n$ 个整数表示序列 $a$。
-
-\subsection[交互库输出格式]{【交互库输出格式】}
-
-这里是下发交互库的输出格式，用于帮助你测试你的程序。
-
-交互库会将你的输入作为测试数据，传入你实现的 \ilcode{cpp}{minCost} 函数中，并获取你的程序得到的结果。
-
-交互库会输出 $n+1$ 行整数，第 $i$ 行表示你的程序得到的位置 $i$ 的结果。
+一行 \ttstring{YES} 或 \ttstring{NO} 表示原神是否启动。
 
 \exampleinput{1}
 \begin{example}
-6 2
-1 1 4 5 1 4
+white
 \end{example}
 
 \exampleoutput{1}
 \begin{example}
-1
-1
-2
-2
-2
-1
-1
+YES
 \end{example}
+
+\exampleexplain{1}
+
+大家觉得呢？
 
 \examplefile{2}
 
 该样例满足子任务 2 的限制。
 
-\examplefile{3}
-
-该样例满足子任务 4 的限制。
-
 \constraints
 
-对于 $100\%$ 的数据，$0\le K\le n\le 10^7,\ 1\le a_i\le 10^9$。
-
-\begin{table}{c|c|c|c|c}
-	子任务编号 & 子任务分值 & $n\le$ & $K\le$ & 特殊性质 \\
-	\tabmid
-	$1$ & $10$ & $100$ & $100$ & 无 \\
-	\hline
-	$2$ & $15$ & $10^3$ & $10^3$ & 无 \\
-	\hline
-	$3$ & $15$ & $10^5$ & $100$ & 无 \\
-	\hline
-	$4$ & $15$ & $10^6$ & $10^6$ & 保证 $a$ 单调不降 \\
-	\hline
-	$5$ & $45$ & $10^7$ & $10^7$ & 无 \\
-\end{table}
-
-\newproblem{薯条}{chips}
-
-\background
-
-这是出题人在吃（很软）的薯条时想出来的题目。
-
-\probdescription
-
-给定一个 $n$ 个点 $m$ 条边的无向图，保证 $m$ 为偶数，图联通且无重边、无自环。
-
-对于图中度数为奇数的点，记有 $k$ 个。请构造方案将 $k$ 个点两两配对，并对每对点找出一条连接两点的包含偶数条边的路径，且每条边至多出现在一条路径中。
-
-请输出方案或判断无解。
-
-\inputformat
-
-第一行两个正整数 $n,m$表示点数和边数。
-
-接下来 $m$ 行，第 $i$ 行两个整数 $u_i,v_i$，表示无向边 $(u_i,v_i)$。
-	
-\outputformat
-
-若无解，需要输出一行 \ttstring{-1}。否则，依次输出 $\frac{k}{2}$ 对的方案。
-
-对于第 $i$ 对，第一行输出三个整数 $a_i,b_i,l_i$，表示第 $i$ 对结点是 $(a_i,b_i)$，路径长为 $l_i$。
-
-第二行输出 $l_i$ 个整数，表示路径上从 $a_i$ 到 $b_i$ 顺次经过的边的编号。
-
-如果有多种方案，你可以输出任意一种。
-
-\exampleinput{1}
-\begin{example}
-5 8
-1 2
-2 3
-3 4
-4 1
-1 5
-2 5
-3 5
-4 5
-\end{example}
-
-\exampleoutput{1}
-\begin{example}
-1 4 2
-5 8
-2 3 6
-2 7 6 1 4 3
-\end{example}
-
-\exampleinput{2}
-\begin{example}
-8 8
-1 2
-2 3
-3 4
-2 5
-2 6
-3 6
-3 7
-3 8
-\end{example}
-
-\exampleoutput{2}
-\begin{example}
-1 5 2
-1 4
-3 4 4
-6 5 2 3
-7 8 2
-7 8
-\end{example}
-
-\examplefile{3}
-
-\examplefile{4}
-
-\constraints
-
-对于所有数据，满足 $2 \le n,m \le 3 \times 10^5 , 2 \le k \le n $，图联通且无重边、无自环。
+对于 $100\%$ 的数据，输入的字符串 $s\in\{\mathtt{white},\mathtt{black},\mathtt{green},\mathtt{blue},\mathtt{rainbow}\}$。
 
 \begin{table}{c|c|c}
-	子任务编号 & 子任务分值 & 特殊限制\\
+	子任务编号 & 子任务分值 & 特殊性质 \\
 	\tabmid
-	$1$ & $21$ & $n,m \le 20$\\
+	$1$ & $50$ & $s=\mathtt{white}$ \\
 	\hline
-	$2$ & $12$ & $k=2$\\
-	\hline
-	$3$ & $17$ & $m=n-1$\\
-	\hline
-	$4$ & $23$ & $n,m \le 3000$\\
-	\hline
-	$5$ & $10$ & 无\\
-	\hline
+	$2$ & $50$ & 无 \\
 \end{table}
 
-\newproblem{烧饼}{pancake}
-
-\background
-
-这是出题人在吃（很圆）的烧饼时想出来的题目。
+\newproblem{完形填空}{blank}
 
 \probdescription
 
-给定平面上 $n$ 个点 $P_1,P_2,\dots, P_n$，以及 $q$ 次查询。每次查询给定 $l,r$，求 $\{P_l,P_{l+1},\dots,P_r\}$ 的最小圆覆盖的半径。
+\stress{本题是一道交互题}。
 
-\inputformat
+给出一个包含字符 \ttstring{*} 的字符串，返回填空后的结果，每个 \ttstring{*} 对应一个汉字或者字母。
 
-第一行，两个正整数 $n, q$。
+\implement
 
-之后 $n$ 行，第 $i$ 行两个正整数 $x_i,y_i$，表示 $P_i$ 的坐标。
+\stress{你不需要，也不应该实现主函数。}
 
-之后 $q$ 行，每行两个正整数 $l,r$，表示一次询问。
+你需要包含头文件 \ilcode{cpp}{"blank.h"}，并实现以下函数：
 
-\outputformat
+\begin{code}{cpp}
+std::string blank(int sid,std::string s)
+\end{code}
 
-输出 $q$ 行，第 $i$ 行输出一个小数表示第 $i$ 次询问的答案。
+其中，$\mathrm{sid}$ 为子任务编号，$s$ 为需要填空的字符串，函数返回值应为填空后的字符串。
 
-对每组询问，设标准答案为 $\mathrm{ans}$ 而你的答案为 $\mathrm{out}$，则你的答案被认为是正确的当且仅当 $\frac{|\mathrm{out}-\mathrm{ans}|}{\max(1,\mathrm{ans})}\le 10^{-4}$。你的输出正确当且仅当 $q$ 次询问的答案均正确。
+我们下发了作为示例的 \filename{blank.h} 和 \filename{grader.cpp} 用于测试你的程序。你可以用如下命令编译你的程序：
+
+\begin{code}{bash}
+g++ blank.cpp grader.cpp -o blank -std=c++14 -lm -O2
+\end{code}
+
+\stress{你不应该从标准输入读入任何东西，或者向标准输出输出任何东西，这些行为将被视为作弊。}
+
+\subsection[交互库输入格式]{【交互库输入格式】}
+
+第一行输入一个字符串表示 $s$。
+
+\subsection[交互库输出格式]{【交互库输出格式】}
+
+输出一行一个字符串表示你填完空的字符串 $s'$。
 
 \exampleinput{1}
 \begin{example}
-10 10
-665807 810957
-853840 435163
-437691 228975
-831731 596470
-792430 516054
-620620 353584
-823622 141842
-709435 705175
-600288 142903
-224567 464849
-3 5
-1 6
-5 9
-2 8
-7 9
-4 5
-4 7
-7 10
-3 6
-5 9
+你说的对，但是《**》是由***自主研发的一款全新********。游戏发生在一个
+被称作「***」的幻想世界，在这里，被神选中的人将被授予「***」，导引**之
+力。你将扮演一位名为「***」的神秘角色，在自由的旅行中邂逅****、****的
+**们，和他们一起击败**，找回失散的**——同时，逐步发掘「**」的真相。
+\end{example}
+
+\exampleoutput{1}
+我不知道。
+
+\exampleexplain{1}
+
+实际的输入没有换行。
+
+\constraints
+
+对于 $100\%$ 的数据，输入为互联网圣经。
+
+\begin{table}{c|c|c|c}
+	子任务编号 & 子任务分值 & $|s|\le$ & 特殊限制 \\
+	\tabmid
+	$1$ & $20$ & $500$ & 为样例 \\
+	\hline
+	$2$ & $30$ & $500$ & 无 \\
+	\hline
+	$3$ & $50$ & $2000$ & 无 \\
+\end{table}
+
+\newproblem{原批测试}{test}
+
+\probdescription
+
+给出 $10$ 个文本文件 \filename{test1.in,test2.in,\dots,test10.in}，你需要提交 $10$ 份文本文件 \filename{test1.out,test2.out,\dots,test10.out}。第 $i$ 个文本文件包含一行字符串，表示第 $i$ 份输入是不是出资原批之手。如果是，字符串应为 \ttstring{original batch}（原批），否则，字符串应为 \ttstring{pure deer person}（纯鹿人）。
+
+\exampleinput{1}
+\begin{example}
+差不多得了屁大点事都要拐上原神，原神一没招你惹你，二没干伤天害理的事情，
+到底怎么你了让你一直无脑抹黑，米哈游每天费尽心思的文化输出弘扬中国文化，
+你这种喷子只会在网上敲键盘诋毁良心公司，中国游戏的未来就是被你这种人毁掉的。
 \end{example}
 
 \exampleoutput{1}
 \begin{example}
-269406.800501120
-312548.384328856
-292492.908126728
-300508.141400720
-292492.908126728
-44752.937492974
-227350.156292557
-352145.534406940
-269406.800501120
-292492.908126728
+original batch
 \end{example}
 
-\constraints
+\scoring
 
-对于所有数据，$n\le 5\times 10^5,\ q\le 5000,\ x_i,y_i\le 10^9$。
+假设你回答正确的数量为 $x$，那么你会得到 \ilcode{cpp}{mt19937} 以 $i^i\bmod 19260817$ 作为种子得到的第 $114514$ 个数字 $y\bmod 100+1$ 的分数。
 
-\begin{table}{c|c|c|c}
-	子任务编号 & 子任务分值 & $n\le$ & $q\le$ \\
-	\tabmid
-	$1$ & $20$ & $100$ & $100$ \\
-	\hline
-	$2$ & $20$ & $5\times 10^5$ & $1$ \\
-	\hline
-	$3$ & $30$ & $2.5\times 10^5$ & $2500$ \\
-	\hline
-	$4$ & $30$ & $5\times 10^5$ & $5000$ \\
-\end{table}
+\hints
+
+原神怎么你了，我现在每天玩原神都能赚 $150$ 原石，每个月差不多 $5000$ 原石的收入，也就是现实生活中每个月 $5000$ 美元的收入水平，换算过来最少也 $30000$ 人民币，虽然我只有 $14$ 岁，但是已经超越了中国绝大多数人（\stress{包括你}）的水平，这便是原神给我的骄傲的资本。
 
 \end{document}
