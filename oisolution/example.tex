@@ -1,25 +1,41 @@
 \documentclass{oisolution}
+\usepackage{hyperref}
 
 \begin{document}
 
-\title{NOI 2023 模拟赛\quad 题解}
-\date{\today}
+\title{NOI2023B.C. 模拟赛\quad 题解}
+\author{原始人}
+\date{1919 年 8 月 10 日}
 \solutiontitle
 
-\newproblem{带鱼}{fish}
+\newproblem{原神启动}{genshin}
 
-显然最多选两个点。记 $L_i$ 为 $[i-K-1,i]$ 中最小值的下标，$R[i]$ 为 $[i+1,i+K+1]$ 中最小值的下标。那么所有有用点对就是 $(L[i],i),(i,R[i])$。单调队列找到 $(L_i,R_i)$ 即可。
+当且仅当输入为 \ttstring{white} 时答案为 \ttstring{YES}。
 
-\newproblem{薯条}{chips}
+\begin{center}
+\href{https://genshin.gamemcu.com/}{\includegraphics[width=400pt,keepaspectratio]{launch.png}}
+\end{center}
 
-有一种构造方法：建一个超级源点 $S$ 连向所有奇度数点，这样整个图就有欧拉回路。硬点 $S$ 为起点跑一遍不难构造方案，但是不保证边数为偶数。
+\newproblem{完形填空}{blank}
 
-因为边数为偶数，所以可以把边两两配对成 $(u,v),(v,w)$ 的形式，然后建一个新图，其中 $(u,w)$ 连边。然后做上面的方法即可。
+****，**《原神》**米哈游*********开放世界冒险游戏。**********「提瓦特」*****，***，**********「神之眼」，**元素**。********「旅行者」*****，*********性格各异、能力独特*伙伴*，*******强敌，*****亲人——**，****「原神」***。
 
-\newproblem{烧饼}{pancake}
+\newproblem{原批测试}{test}
 
-考虑使用如下算法近似维护出凸包：把 $[0,\pi)$ 用 $B$ 个角度均匀分割，然后对于每个角度 $\theta$，求出投影在直线 $y=\tan\theta x$ 上最两端的点加入凸包。
+\subsection[Algo 1]{算法 1}
 
-这个算法容易用线段树维护。误差为 $\displaystyle 1-\cos\frac{\pi}{B}=O\left(\left(\frac{\pi}{B}\right)^2\right)$。
+用眼睛做。
+
+\subsection[Algo 2]{算法 2}
+
+用头做。
+
+\subsection[Algo 3]{算法 3}
+
+训练一个神经网络做。
+
+\subsection[Algo 4]{算法 4}
+
+差不多得了屁大点事都要拐上原神，原神一没招你惹你，二没干伤天害理的事情，到底怎么你了让你一直无脑抹黑，米哈游每天费尽心思的文化输出弘扬中国文化，你这种喷子只会在网上敲键盘诋毁良心公司，中国游戏的未来就是被你这种人毁掉的。
 
 \end{document}
