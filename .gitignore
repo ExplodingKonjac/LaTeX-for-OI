@@ -1,1 +1,4 @@
-_minted_*
+_minted-*
+*.aux
+*.out
+*.toc
