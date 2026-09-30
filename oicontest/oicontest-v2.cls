@@ -16,6 +16,8 @@
 \RequirePackage{amsfonts}
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
+\RequirePackage{multirow}
+\RequirePackage{multicolumn}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage{lineno}
@@ -64,7 +66,7 @@
 \renewcommand{\subsubsectionmark}[1]{}
 
 \newcommand{\oic@addbracket}[1]{【#1】}
-\titleformat{\section}{\Large\sf}{}{0pt}{%
+\titleformat{\section}{\Large\heiti}{}{0pt}{%
 	\centering\label{sec:\thesection}
 }
 \titleformat{\subsection}{\bf}{}{1em}{%
@@ -231,12 +233,12 @@
 
 	\textbf{注意事项（请仔细阅读）}
 	\begin{enumerate}
-		\ifx\oicjudgermachine\@empty
+		\expandafter\ifstrempty\expandafter{\oicjudgermachine}{}{%
 			\item 测试机器：\oicjudgermachine。
-		\fi
-		\ifx\oicjudgerenvironment\@empty
+		}
+		\expandafter\ifstrempty\expandafter{\oicjudgerenvironment}{}{%
 			\item 测试环境：\oicjudgerenvironment。
-		\fi
+		}
 		\forlistloop{\item }{\oicattention}
 	\end{enumerate}
 \endgroup}
@@ -248,7 +250,7 @@
 	\stepcounter{oic@curprob}%
 	\edef\name{\oic@getfield{\alph{oic@curprob}}{name}}%
 	\edef\eng{\oic@getfield{\alph{oic@curprob}}{eng}}%
-	\section{\name（\textrm{\eng}）}%
+	\section{\name（\eng）}%
 \endgroup}
 
 % subsections definition
@@ -310,5 +312,17 @@
 			\Xhline{5\arrayrulewidth}
 		\end{tabular}
 	\end{center}
+	\endgroup
+}
+\newenvironment{oictablex}[2]{%
+	\begingroup
+	\def\tabmid{\Xhline{3\arrayrulewidth}}
+	\center
+		\tabularx{#1}{#2}
+			\Xhline{5\arrayrulewidth}
+}{%
+			\Xhline{5\arrayrulewidth}
+		\endtabularx
+	\endcenter
 	\endgroup
 }
