@@ -16,8 +16,6 @@
 \RequirePackage{amsfonts}
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
-\RequirePackage{multirow}
-\RequirePackage{multicolumn}
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
 \RequirePackage{lineno}
@@ -30,6 +28,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{verbatim}
 \RequirePackage{enumitem}
+\RequirePackage{tabularray}
 
 % geometric settings
 \geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
@@ -53,12 +52,20 @@
 
 % font settings
 \setmonofont{Consolas}
-\setCJKmonofont{SimSun}
+\setCJKmainfont{SimSun}[BoldFont=SimHei]
+\setCJKmonofont{Consolas}
 
 % list settings
-\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,leftmargin=3em}
-\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,leftmargin=3em}
-\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,leftmargin=3em}
+\setlist[itemize,enumerate]{
+	itemsep=0pt,
+	parsep=0pt,
+	partopsep=0pt,
+	topsep=0pt,
+	leftmargin=3em
+}
+% \setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=0pt,topsep=0pt,leftmargin=3em}
+% \setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=0pt,topsep=0pt,leftmargin=3em}
+% \setdescription{itemsep=0pt,partopsep=0pt,parsep=0pt,topsep=0pt,leftmargin=3em}
 
 % section settings
 \renewcommand{\sectionmark}[1]{\markright{#1}}
@@ -70,7 +77,7 @@
 	\centering\label{sec:\thesection}
 }
 \titleformat{\subsection}{\bf}{}{1em}{%
-	\heiti\fontsize{13bp}{13bp*\real{\baselinestretch}}\oic@addbracket
+	\bf\fontsize{13bp}{13bp*\real{\baselinestretch}}\oic@addbracket
 }
 \titleformat{\subsubsection}{\bf}{}{1em}{}
 
@@ -95,7 +102,8 @@
 	breaklines,
 	breakanywhere,
 	xleftmargin=8.5pt,
-	xrightmargin=-3.5pt
+	xrightmargin=-3.5pt,
+	vspace=3pt
 }
 
 % text formats
@@ -302,27 +310,32 @@
 \newminted[oicsample]{text}{}
 \newmintedfile[oicsamplefrom]{text}{}
 
-\newenvironment{oictable}[1]{%
-	\begingroup
-	\def\tabmid{\Xhline{3\arrayrulewidth}}
-	\begin{center}
-		\begin{tabular}{#1}
-			\Xhline{5\arrayrulewidth}
-}{%
-			\Xhline{5\arrayrulewidth}
-		\end{tabular}
-	\end{center}
-	\endgroup
+\usepackage{tabularray}
+
+% table environment
+\newlength{\oictableaboveskip}
+\newlength{\oictablebelowskip}
+\setlength{\oictableaboveskip}{0.8\baselineskip}
+\setlength{\oictablebelowskip}{0.8\baselineskip}
+
+\NewTblrEnviron{oic@tblr}
+\SetTblrInner[oic@tblr]{
+    rowsep = 0pt,
+    hlines = {\arrayrulewidth},
+    hline{1,Z} = {5\arrayrulewidth},
+    hline{2} = {3\arrayrulewidth},
+    vline{2-Y} = {\arrayrulewidth},
 }
-\newenvironment{oictablex}[2]{%
-	\begingroup
-	\def\tabmid{\Xhline{3\arrayrulewidth}}
-	\center
-		\tabularx{#1}{#2}
-			\Xhline{5\arrayrulewidth}
-}{%
-			\Xhline{5\arrayrulewidth}
-		\endtabularx
-	\endcenter
-	\endgroup
+\NewDocumentEnvironment{oictable}{m +b}{%
+    \par
+    \addvspace{\oictableaboveskip}%
+    \begingroup
+    \centering
+    \begin{oic@tblr}{colspec={#1}}
+        #2
+    \end{oic@tblr}%
+    \par
+    \endgroup
+    \addvspace{\oictablebelowskip}%
 }
+{}
