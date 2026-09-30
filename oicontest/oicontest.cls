@@ -1,6 +1,6 @@
 % oicontest-v2.cls
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{oicontest-v2}[A LaTeX document class for OI contest statement.]
+\ProvidesClass{oicontest}[A LaTeX document class for OI contest statement.]
 
 % inherits from ctexart
 \LoadClass[a4paper,12pt]{ctexart}
